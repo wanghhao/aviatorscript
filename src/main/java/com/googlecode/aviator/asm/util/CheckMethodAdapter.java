@@ -30,15 +30,9 @@
 package com.googlecode.aviator.asm.util;
 
 
-import java.util.HashMap;
+import com.googlecode.aviator.asm.*;
 
-import com.googlecode.aviator.asm.AnnotationVisitor;
-import com.googlecode.aviator.asm.Attribute;
-import com.googlecode.aviator.asm.Label;
-import com.googlecode.aviator.asm.MethodAdapter;
-import com.googlecode.aviator.asm.MethodVisitor;
-import com.googlecode.aviator.asm.Opcodes;
-import com.googlecode.aviator.asm.Type;
+import java.util.HashMap;
 
 /**
  * A {@link MethodAdapter} that checks that its methods are properly used. More
@@ -869,7 +863,7 @@ public class CheckMethodAdapter extends MethodAdapter {
                 checkIdentifier(name, begin, slash, null);
                 begin = slash + 1;
             } while (slash != max);
-        } catch (IllegalArgumentException _) {
+        } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Invalid "
                     + msg
                     + " (must be a fully qualified class name in internal form): "
@@ -943,7 +937,7 @@ public class CheckMethodAdapter extends MethodAdapter {
                 }
                 try {
                     checkInternalName(desc, start + 1, index, null);
-                } catch (IllegalArgumentException _) {
+                } catch (IllegalArgumentException e) {
                     throw new IllegalArgumentException("Invalid descriptor: "
                             + desc);
                 }

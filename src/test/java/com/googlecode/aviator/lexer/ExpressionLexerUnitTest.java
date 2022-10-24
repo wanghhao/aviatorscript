@@ -18,13 +18,12 @@
  **/
 package com.googlecode.aviator.lexer;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
 import com.googlecode.aviator.exception.CompileExpressionErrorException;
 import com.googlecode.aviator.lexer.token.Token;
 import com.googlecode.aviator.lexer.token.Token.TokenType;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 
 public class ExpressionLexerUnitTest {
@@ -36,7 +35,7 @@ public class ExpressionLexerUnitTest {
         this.lexer = new ExpressionLexer("1+2");
         Token<?> token = this.lexer.scan();
         assertEquals(TokenType.Number, token.getType());
-        assertEquals(1, token.getValue(null));
+        assertEquals(1L, token.getValue(null));
         assertEquals(0, token.getStartIndex());
 
         token = this.lexer.scan();
@@ -46,7 +45,7 @@ public class ExpressionLexerUnitTest {
 
         token = this.lexer.scan();
         assertEquals(TokenType.Number, token.getType());
-        assertEquals(2, token.getValue(null));
+        assertEquals(2L, token.getValue(null));
         assertEquals(2, token.getStartIndex());
 
         assertNull(this.lexer.scan());

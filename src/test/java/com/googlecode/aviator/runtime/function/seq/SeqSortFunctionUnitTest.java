@@ -1,17 +1,13 @@
 package com.googlecode.aviator.runtime.function.seq;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import org.junit.Test;
-
 import com.googlecode.aviator.runtime.type.AviatorObject;
 import com.googlecode.aviator.runtime.type.AviatorRuntimeJavaType;
+import org.junit.Test;
+
+import java.util.*;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 
 public class SeqSortFunctionUnitTest {
@@ -32,7 +28,7 @@ public class SeqSortFunctionUnitTest {
         index = 0;
         Integer[] dup = (Integer[]) result.getValue(null);
         assertFalse(Arrays.equals(a, dup));
-        for (Integer i : dup) {
+        for (int i : dup) {
             assertEquals(i, index++);
         }
     }
@@ -56,7 +52,7 @@ public class SeqSortFunctionUnitTest {
         assertFalse(a.equals(dup));
         System.out.println(a);
         System.out.println(dup);
-        for (Integer i : dup) {
+        for (int i : dup) {
             assertEquals(i, index++);
         }
     }

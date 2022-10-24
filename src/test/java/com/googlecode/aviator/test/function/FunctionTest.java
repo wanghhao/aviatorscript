@@ -18,20 +18,13 @@
  **/
 package com.googlecode.aviator.test.function;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-
-import org.junit.Test;
-
 import com.googlecode.aviator.AviatorEvaluator;
 import com.googlecode.aviator.exception.ExpressionRuntimeException;
+import org.junit.Test;
+
+import java.util.*;
+
+import static junit.framework.Assert.*;
 
 
 public class FunctionTest {
@@ -172,7 +165,7 @@ public class FunctionTest {
     @Test
     public void testSeqFunction() {
         Map<String, Object> env = new HashMap<String, Object>();
-        Integer[] a = new Integer[10];
+        int[] a = new int[10];
         for (int i = 0; i < a.length; i++) {
             a[i] = 9 - i;
         }
@@ -239,11 +232,11 @@ public class FunctionTest {
         }
 
         assertEquals(9, a[0]);
-        assertFalse(Arrays.equals(a, (Object[]) AviatorEvaluator.execute("sort(a)", env)));
+        assertFalse(Arrays.equals(a, (int[]) AviatorEvaluator.execute("sort(a)", env)));
         assertEquals(9, a[0]);
         Arrays.sort(a);
         assertEquals(0, a[0]);
-        assertTrue(Arrays.equals(a, (Object[]) AviatorEvaluator.execute("sort(a)", env)));
+        assertTrue(Arrays.equals(a, (int[]) AviatorEvaluator.execute("sort(a)", env)));
 
         assertEquals(2, AviatorEvaluator.execute("count(map(list,string.length))", env));
         assertTrue((Boolean) AviatorEvaluator.execute("include(map(list,string.length),5)", env));
